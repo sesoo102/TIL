@@ -1640,6 +1640,86 @@ print(s[:-1])  # 'abcde'
 ```
 ✅ `s[:-1]` → **마지막 문자 제외하고 출력 (`abcde`)**  
 
+### **📌 문자열 슬라이싱을 이용한 특정 문자 제거**
+✅ **슬라이싱(`문자열[시작:끝:증가값]`)을 활용하면 원하는 위치의 문자만 빼고 출력할 수 있습니다.**  
+
+---
+
+## **1️⃣ 마지막 문자 제거**
+```python
+s = "abcdef"
+print(s[:-1])  # 'abcde'
+```
+✅ `[:-1]` → **마지막 문자(`f`)를 제외한 나머지 출력**  
+
+---
+
+## **2️⃣ 첫 번째 문자 제거**
+```python
+s = "abcdef"
+print(s[1:])  # 'bcdef'
+```
+✅ `[1:]` → **첫 번째 문자(`a`)를 제외한 나머지 출력**  
+
+---
+
+## **3️⃣ 특정 위치의 문자 제거**
+✅ **예제: 문자열에서 특정 인덱스의 문자 제거**
+```python
+s = "abcdef"
+index_to_remove = 2  # 'c' 제거
+print(s[:index_to_remove] + s[index_to_remove+1:])  # 'abdef'
+```
+✅ `s[:2]` → `"ab"` (0~1번 인덱스)  
+✅ `s[3:]` → `"def"` (3번 인덱스부터 끝까지)  
+✅ 두 부분을 더하면 **"abdef"** (2번 인덱스(`c`)가 제거됨)
+
+---
+
+## **4️⃣ 특정 문자만 제거 (여러 개 존재할 경우)**
+✅ **예제: 문자열에서 특정 문자(`e`) 제거**
+```python
+s = "hello world"
+print(s.replace("e", ""))  # 'hllo world'
+```
+✅ `.replace("e", "")` → 문자열에서 모든 `"e"`를 제거  
+
+---
+
+## **5️⃣ 특정 문자 하나만 제거 (`replace()` 제한적 활용)**
+✅ **예제: 첫 번째 `"l"`만 제거하기**
+```python
+s = "hello world"
+print(s.replace("l", "", 1))  # 'helo world'
+```
+✅ `.replace("l", "", 1)` → `"l"`을 **첫 번째 한 번만 제거**  
+
+---
+
+## **6️⃣ 여러 개의 특정 문자 제거**
+✅ **예제: "a", "e", "i", "o", "u" (모음) 제거**
+```python
+s = "beautiful day"
+vowels = "aeiou"
+
+filtered_s = "".join([char for char in s if char not in vowels])
+print(filtered_s)  # 'btfl dy'
+```
+✅ 리스트 컴프리헨션 사용하여 `"aeiou"` 모음 제거  
+✅ `"beautiful day"` → `"btfl dy"`  
+
+---
+
+## **📌 최종 정리**
+| 제거 방법 | 코드 | 결과 |
+|-----------|--------|------------|
+| 마지막 문자 제거 | `s[:-1]` | `"abcde"` |
+| 첫 번째 문자 제거 | `s[1:]` | `"bcdef"` |
+| 특정 위치 문자 제거 | `s[:index] + s[index+1:]` | `"abdef"` |
+| 특정 문자 전체 제거 | `s.replace("e", "")` | `"hllo world"` |
+| 특정 문자 한 번만 제거 | `s.replace("l", "", 1)` | `"helo world"` |
+| 여러 문자 제거 | `"".join([char for char in s if char not in vowels])` | `"btfl dy"` |
+
 ---
 
 ### **📌 5️⃣ 특정 구간을 역순으로 출력**
